@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Go to working dir
-cd ~/bots/docker-web-screenshot
+cd ~/Puppeteer-docker-screenshot
 
 ## Set variables
 # URL:  		 Adreça a visitar.
