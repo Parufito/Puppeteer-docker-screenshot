@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Go to working dir
-cd ~/bots/Puppeteer-docker-screenshot
+# Preparar 
+screenshotFile="$(pwd)/screenshot.png"
+
+if [ ! -d "$screenshotFile" ]; then
+    touch $screenshotFile
+    chmod -R 777 "$screenshotFile"
+fi
 
 ## Set variables
 # URL:  		 Adreça a visitar.
@@ -13,4 +18,4 @@ SELECTED_DIV=".card-body"
 WAIT_ELEMENT=".card-body"
 
 #Pupetteer docker screenshot
-docker run -i -v $(pwd)/screenshots:/home/pptruser/screenshots --init --cap-add=SYS_ADMIN --rm -e SELECTED_DIV="$SELECTED_DIV" -e WAIT_ELEMENT="$WAIT_ELEMENT" -e URL="$URL" ghcr.io/puppeteer/puppeteer:latest node -e "$(cat screenshot.js)"
+docker run -i -v $(pwd)/screenshot.png:/home/pptruser/screenshots/screenshot.png --init --cap-add=SYS_ADMIN --rm -e SELECTED_DIV="$SELECTED_DIV" -e WAIT_ELEMENT="$WAIT_ELEMENT" -e URL="$URL" ghcr.io/puppeteer/puppeteer:latest node -e "$(cat screenshot.js)"

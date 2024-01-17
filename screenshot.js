@@ -3,21 +3,7 @@ const puppeteer = require('puppeteer');
 /*Gestió de fitxers. És una xapussa*/
 
 // Aquest directori serà el de dins de la imatge docker
-const screenshotPath = '/home/pptruser/screenshots';
-const screenshotFile = screenshotPath+'/screenshot.png';
-
-// Comprova si el directori ja existeix
-if (!fs.existsSync(screenshotPath)) {
-	// Si no existeix, crea el directori
-	fs.mkdirSync(screenshotPath, { recursive: true });
-	// Estableix els permissos desitjats (per exemple, permisos d'escriptura per a tots)
-	fs.chmodSync(screenshotPath, '777');
-}
-
-// Si existeix un screenshot previ l'esborra
-if (fs.existsSync(screenshotFile)) {
-	fs.unlinkSync(screenshotFile);
-}
+const screenshotFile = '/home/pptruser/screenshots/screenshot.png';
 
 // Variables web definides com a variables d'entorn
 const url_web = process.env.URL;
